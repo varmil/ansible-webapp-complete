@@ -1,0 +1,22 @@
+---
+- name: download wordpress package
+  get_url: url=http://ja.wordpress.org/wordpress-{{wordpress_version}}-ja.tar.gz dest=/var/tmp/
+  tags: wordpress
+
+- name: extract wordpress tar ball
+  shell: tar xf /var/tmp/wordpress-{{wordpress_version}}-ja.tar.gz chdir=/var/www creates=/var/www/wordpress/wp-admin/index.php
+  notify: change wordpress files owner
+  tags: wordpress
+
+- name: generate secret keys
+  command: curl -o /var/www/wordpress/secret-keys.php -s https://api.wordpress.org/secret-key/1.1/salt/ creates=/var/www/wordpress/secret-keys.php
+  tags: wordpress
+
+- name: read secret keys
+  command: cat /var/www/wordpress/secret-keys.php
+  register: secret_keys
+  tags: wordpress
+
+- name: configure wp-config.php
+  template: src=wp-config.php.j2 dest=/var/www/wordpress/wp-config.php owner=apache group=apache mode=0400
+  tags: wordpress
