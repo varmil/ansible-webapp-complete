@@ -1,12 +1,19 @@
 ---
-- name: configure .vimrc
-  copy: src=../files/.vimrc dest=~vagrant/.vimrc owner=vagrant group=vagrant mode=0700
+- name: git clone dotfiles
+  git:
+    repo=https://github.com/varmil/dotfiles.git
+    dest=/usr/local/src/dotfiles
+    accept_hostkey=yes
   tags: vim
 
-- name: configure .bashrc
-  copy: src=../files/.bashrc dest=~vagrant/.bashrc owner=vagrant group=vagrant mode=0700
-  tags: bashrc
+- name: copy .vimrc
+  shell: cp /usr/local/src/dotfiles/.vimrc {{user}}/.vimrc
+  tags: vim
 
-- name: source .bashrc
-  shell: source ~vagrant/.bashrc
+# - name: configure .vimrc
+  # copy: src=../files/.vimrc dest={{user}}/.vimrc owner=vagrant group=vagrant mode=0700
+  # tags: vim
+
+- name: configure .bashrc
+  copy: src=../files/.bashrc dest={{user}}/.bashrc owner=vagrant group=vagrant mode=0700
   tags: bashrc
