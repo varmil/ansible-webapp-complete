@@ -1,0 +1,4 @@
+---
+- name: easy_install pip
+  command: easy_install pip
+  tags: easy_install

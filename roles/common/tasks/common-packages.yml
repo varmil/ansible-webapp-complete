@@ -2,10 +2,15 @@
 - name: be sure common packages are installed
   yum: name={{item}} state=installed
   with_items:
+    - yum-priorities
     - libselinux-python
     - ntp
     - bind-utils
     - vim
     - wget
     - git
+    - nodejs
+    - npm
+    - python-devel
+    - python-setuptools
   tags: common-packages
