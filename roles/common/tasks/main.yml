@@ -5,4 +5,5 @@
 - include: ntp.yml
 - include: easy_install.yml
 - include: dotfiles.yml
+- include: language.yml
 - include: set-repo-priorities.yml
