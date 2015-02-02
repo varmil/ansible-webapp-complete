@@ -1,9 +1,0 @@
----
-- hosts: wordpress
-  sudo: yes
-  roles:
-    - wordpress
-  vars_prompt:
-    - name: "dbpassword"
-      prompt: "Please enter MySQL wordpress user password"
-      default: "wordpress"
