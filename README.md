@@ -2,7 +2,7 @@ ansible-webapp-complete
 =======
 
 
-    cd ansible
+    cd ansible-webapp-complete
     ansible-playbook -i development site.yml [-t tagnames]
 
 
