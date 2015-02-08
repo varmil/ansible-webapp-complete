@@ -1,19 +1,25 @@
 ---
+- name: check whether dotfiles is already installed
+  stat: path=/usr/local/src/dotfiles
+  register: p
+  tags: dotfiles
+
 - name: git clone dotfiles
   git:
     repo=https://github.com/varmil/dotfiles.git
     dest=/usr/local/src/dotfiles
     accept_hostkey=yes
-  tags: vim
+  when: not (p.stat.isdir is defined and p.stat.isdir)
+  tags: dotfiles
 
 - name: copy .vimrc
-  shell: cp /usr/local/src/dotfiles/.vimrc {{user}}/.vimrc
-  tags: vim
+  shell: creates={{user}}/.vimrc cp /usr/local/src/dotfiles/.vimrc {{user}}/.vimrc
+  tags: dotfiles
 
-# - name: configure .vimrc
-  # copy: src=../files/.vimrc dest={{user}}/.vimrc owner=vagrant group=vagrant mode=0700
-  # tags: vim
+- name: setting mode .vimrc
+  file: path={{user}}/.vimrc owner={{user_name}} group={{user_name}} mode=0644
+  tags: dotfiles
 
 - name: configure .bashrc
-  copy: src=../files/.bashrc dest={{user}}/.bashrc owner=vagrant group=vagrant mode=0700
-  tags: bashrc
+  copy: src=../files/.bashrc dest={{user}}/.bashrc owner={{user_name}} group={{user_name}} mode=0700
+  tags: dotfiles

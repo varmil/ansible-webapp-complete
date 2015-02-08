@@ -1,0 +1,18 @@
+---
+- name: fetch nginx.repo
+  yum: name=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present
+  tags: nginx
+
+- name: configure nginx.repo
+  copy: src=../files/nginx.repo dest=/etc/yum.repos.d/ owner=vagrant group=vagrant mode=0755
+  tags: nginx
+
+- name: be sure nginx is installed
+  yum: name={{item}} disablerepo=* enablerepo=nginx state=installed
+  with_items:
+    - nginx
+  tags: nginx
+
+- name: be sure nginx is started and autostarted
+  service: name=nginx state=started enabled=yes
+  tags: nginx

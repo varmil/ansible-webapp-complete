@@ -1,4 +1,7 @@
 ---
-- name: easy_install pip
-  command: easy_install pip
+- name: easy_install
+  easy_install: name={{ item }}
+  with_items:
+    - pip
+    - supervisor
   tags: easy_install

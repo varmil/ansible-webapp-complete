@@ -1,8 +1,4 @@
 ---
 - name: localedef
-  shell: sudo localedef -f UTF-8 -i ja_JP ja_JP
+  shell: localedef -f UTF-8 -i ja_JP ja_JP
   tags: language
-
-- name: git config --global color.ui true
-  shell: git config --global color.ui true
-  tags: git

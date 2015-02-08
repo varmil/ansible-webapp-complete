@@ -1,0 +1,4 @@
+---
+- include: fetch.yml
+- include: setup.yml
+- include: nginx.yml

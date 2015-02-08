@@ -1,2 +1,5 @@
-[afiv]
+[webservers]
 afiv
+
+[development:children]
+webservers

@@ -1,0 +1,5 @@
+user: /home/vagrant
+user_name: vagrant
+repo: git@bitbucket.org:varmil/afi.git
+app_base_directory: "{{user}}/webapp"
+conf_directory: "{{app_base_directory}}/config/development"

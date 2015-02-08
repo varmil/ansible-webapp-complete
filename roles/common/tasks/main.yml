@@ -1,9 +1,14 @@
 ---
-- include: epel.yml
+# - include: epel.yml
 - include: common-packages.yml
 # - include: sshd.yml
 # - include: ntp.yml
 - include: easy_install.yml
 - include: dotfiles.yml
+- include: nodejs.yml
+- include: mariadb.yml
+- include: nginx.yml
+- include: supervisord.yml
 - include: language.yml
-- include: set-repo-priorities.yml
+- include: git.yml
+# - include: set-repo-priorities.yml

@@ -1,0 +1,37 @@
+---
+- name: check whether nodebrew is already installed
+  stat: path={{user}}/.nodebrew/current/bin/nodebrew follow=true
+  register: st
+  tags: nodejs
+
+- name: install nodebrew
+  command: wget git.io/nodebrew
+  sudo: false
+  when: st.stat.md5 is not defined
+  tags: nodejs
+
+- name: setup nodebrew
+  command: perl nodebrew setup
+  sudo: false
+  when: st.stat.md5 is not defined
+  tags: nodejs
+
+- name: source .bashrc
+  shell: source {{user}}/.bashrc
+  sudo: false
+  when: st.stat.md5 is not defined
+  tags: nodejs
+
+- name: install nodejs
+  shell: "{{user}}/.nodebrew/current/bin/nodebrew install-binary latest"
+  sudo: false
+  when: st.stat.md5 is not defined
+  ignore_errors: true
+  tags: nodejs
+
+- name: use nodejs
+  shell: "{{user}}/.nodebrew/current/bin/nodebrew use latest"
+  sudo: false
+  when: st.stat.md5 is not defined
+  ignore_errors: true
+  tags: nodejs

@@ -1,0 +1,14 @@
+---
+- name: npm install
+  command: chdir={{app_base_directory}} npm install
+  ignore_errors: true
+  tags: setup
+
+- name: import DB data
+  command: "{{app_base_directory}}/sql/import_dump.sh"
+  tags: setup
+
+- name: chmod 711 home directory
+  file: path={{user}} state=directory recurse=no mode=0711
+  sudo: true
+  tags: setup

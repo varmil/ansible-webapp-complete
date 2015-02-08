@@ -1,0 +1,19 @@
+---
+- name: copy supervisord.conf
+  template: src=../templates/supervisord.conf dest=/etc/ owner=root group=root mode=0777
+  tags: supervisord
+
+- name: copy init/supervisord.conf
+  copy: src=../files/init.supervisord.conf dest=/etc/init/supervisord.conf owner=root group=root mode=0777
+  tags: supervisord
+
+- name: check whether supervisord is already started
+  command: initctl status supervisord
+  ignore_errors: true
+  register: result
+  tags: supervisord
+
+- name: start supervisord
+  command: initctl start supervisord
+  when: result.stdout.find('running') < 0
+  tags: supervisord

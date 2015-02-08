@@ -1,0 +1,21 @@
+---
+- name: setup nginx.conf
+  shell: rsync -av {{conf_directory}}/nginx/nginx.conf /etc/nginx/nginx.conf
+  sudo: true
+  tags: nginx_conf
+
+- name: setup afi.conf
+  shell: rsync -av {{conf_directory}}/nginx/afi.conf /etc/nginx/conf.d/afi.conf
+  sudo: true
+  tags: nginx_conf
+
+- name: mkdir nginx proxy_*
+  file: path=/opt/nginx/proxy_cache state=directory owner=nginx group=nginx mode=0755
+  file: path=/opt/nginx/proxy_temp state=directory owner=nginx group=nginx mode=0755
+  sudo: true
+  tags: nginx_conf
+
+- name: restart nginx
+  service: name=nginx state=restarted
+  sudo: true
+  tags: nginx_conf

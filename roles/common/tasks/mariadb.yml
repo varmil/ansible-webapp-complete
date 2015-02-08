@@ -1,0 +1,21 @@
+---
+- name: configure maria.repo
+  copy: src=../files/maria.repo dest=/etc/yum.repos.d/ owner=vagrant group=vagrant mode=0755
+  tags: mariadb
+
+- name: be sure mariadb dependency is installed
+  yum: name={{item}} state=installed
+  with_items:
+    - perl-DBI
+  tags: mariadb
+
+- name: be sure mariadb is installed
+  yum: name={{item}} enablerepo=mariadb state=installed
+  with_items:
+    - MariaDB-client
+    - MariaDB-server
+  tags: mariadb
+
+- name: be sure mariadb is started and autostarted
+  service: name=mysql state=started enabled=yes
+  tags: mariadb

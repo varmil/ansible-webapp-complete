@@ -1,0 +1,30 @@
+---
+- name: git config --global color.ui true
+  shell: git config --global color.ui true
+  sudo: false
+  tags: git
+
+- name: git-completion.bash
+  shell: chdir={{user}} wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O .git-completion.bash
+  sudo: false
+  tags: git
+
+- name: git-prompt
+  shell: chdir={{user}} wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O .git-prompt.sh
+  sudo: false
+  tags: git
+
+- name: chmod +x
+  shell: chmod a+x {{user}}/.git-completion.bash
+  sudo: false
+  tags: git
+
+- name: chmod +x
+  shell: chmod a+x {{user}}/.git-prompt.sh
+  sudo: false
+  tags: git
+
+- name: source .bashrc
+  shell: source {{user}}/.bashrc
+  sudo: false
+  tags: git

@@ -9,8 +9,11 @@
     - vim
     - wget
     - git
-    - nodejs
-    - npm
     - python-devel
     - python-setuptools
+    - redis
   tags: common-packages
+
+- name: be sure redis is started and autostarted
+  service: name=redis state=started enabled=yes
+  tags: redis
