@@ -1,5 +1,5 @@
 user_name: vagrant
-user: /home/{{user}}
+user: /home/{{user_name}}
 repo: git@bitbucket.org:varmil/afi.git
 app_base_directory: "{{user}}/webapp"
 conf_directory: "{{app_base_directory}}/config/development"
