@@ -23,7 +23,7 @@ ansible-webapp-complete
 * conf_directory
   * `nginx.conf` などのconfigファイルが格納されているパス。cloneするリポジトリ内に含まれている想定
 * ssh_private_key_path
-  * ローカルの秘密鍵へのパス（ゲストサーバへ転送して、webappをremoteからfetchする際に使用）
+  * ローカルの秘密鍵へのパス（ゲストサーバへ転送して、webappをremoteからcloneする際に使用）
 
 ### Note
 * `roles/webapp/` は各アプリケーションによって修正が必要
