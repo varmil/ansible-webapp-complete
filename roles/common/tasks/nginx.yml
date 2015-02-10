@@ -4,7 +4,7 @@
   tags: nginx
 
 - name: configure nginx.repo
-  copy: src=../files/nginx.repo dest=/etc/yum.repos.d/ owner=vagrant group=vagrant mode=0755
+  copy: src=../files/nginx.repo dest=/etc/yum.repos.d/ owner={{user_name}} group={{user_name}} mode=0755
   tags: nginx
 
 - name: be sure nginx is installed

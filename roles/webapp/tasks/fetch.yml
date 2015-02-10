@@ -5,7 +5,7 @@
   tags: webapp
 
 - name: copy id_rsa
-  copy: src=~/.ssh/id_rsa dest={{user}}/.ssh/ owner={{user_name}} group={{user_name}} mode=0600
+  copy: src={{ssh_private_key_path}} dest={{user}}/.ssh/ owner={{user_name}} group={{user_name}} mode=0600
   when: not (p.stat.isdir is defined and p.stat.isdir)
   tags: webapp
 

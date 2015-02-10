@@ -1,5 +1,6 @@
-user: /home/vagrant
 user_name: vagrant
+user: /home/{{user}}
 repo: git@bitbucket.org:varmil/afi.git
 app_base_directory: "{{user}}/webapp"
 conf_directory: "{{app_base_directory}}/config/development"
+ssh_private_key_path: ~/.ssh/id_rsa
