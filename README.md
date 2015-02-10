@@ -27,3 +27,4 @@ ansible-webapp-complete
 
 ### Note
 * `roles/webapp/` は各アプリケーションによって修正が必要
+* インベントリファイルのIPを適宜変更のこと
