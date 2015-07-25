@@ -4,11 +4,11 @@
 # - include: sshd.yml
 # - include: ntp.yml
 - include: easy_install.yml
+- include: git.yml
 - include: dotfiles.yml
 - include: nodejs.yml
 - include: mariadb.yml
 - include: nginx.yml
 - include: supervisord.yml
 - include: language.yml
-- include: git.yml
 # - include: set-repo-priorities.yml
