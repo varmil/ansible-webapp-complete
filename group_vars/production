@@ -1,6 +1,6 @@
-user_name: vagrant
+user_name: ay
 user: /home/{{user_name}}
 repo: git@bitbucket.org:varmil/kuroko.git
 app_base_directory: "{{user}}/webapp"
-conf_directory: "{{app_base_directory}}/config/development"
+conf_directory: "{{app_base_directory}}/config/production"
 ssh_private_key_path: ~/.ssh/id_rsa

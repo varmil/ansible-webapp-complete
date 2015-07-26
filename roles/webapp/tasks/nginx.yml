@@ -4,8 +4,8 @@
   sudo: true
   tags: nginx_conf
 
-- name: setup afi.conf
-  shell: rsync -av {{conf_directory}}/nginx/afi.conf /etc/nginx/conf.d/afi.conf
+- name: setup webapp.conf
+  shell: rsync -av {{conf_directory}}/nginx/webapp.conf /etc/nginx/conf.d/webapp.conf
   sudo: true
   tags: nginx_conf
 
