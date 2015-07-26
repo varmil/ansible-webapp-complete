@@ -5,6 +5,8 @@
     - yum-priorities
     - libselinux-python
     - ntp
+    - gcc
+    - gcc-c++
     - bind-utils
     - vim
     - wget
