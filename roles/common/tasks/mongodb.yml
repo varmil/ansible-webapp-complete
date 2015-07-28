@@ -1,0 +1,14 @@
+---
+- name: configure mongodb.repo
+  copy: src=../files/mongodb-org.repo dest=/etc/yum.repos.d/ owner={{user_name}} group={{user_name}} mode=0755
+  tags: mongod
+
+- name: be sure mongod is installed
+  yum: name={{item}} disablerepo=* enablerepo=mongodb-org-3.0 state=installed
+  with_items:
+    - mongodb-org
+  tags: mongod
+
+- name: be sure mongod is started and autostarted
+  service: name=mongod state=started enabled=yes
+  tags: mongod

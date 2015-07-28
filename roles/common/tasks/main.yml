@@ -8,6 +8,7 @@
 - include: dotfiles.yml
 - include: nodejs.yml
 - include: mariadb.yml
+- include: mongodb.yml
 - include: nginx.yml
 - include: supervisord.yml
 - include: language.yml
