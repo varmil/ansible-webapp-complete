@@ -5,7 +5,7 @@
   tags: nodejs
 
 - name: install nodebrew
-  command: wget git.io/nodebrew
+  command: wget --no-check-certificate git.io/nodebrew
   sudo: false
   when: st.stat.md5 is not defined
   tags: nodejs
