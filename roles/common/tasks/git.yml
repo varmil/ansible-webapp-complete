@@ -5,12 +5,12 @@
   tags: git
 
 - name: git-completion.bash
-  shell: chdir={{user}} wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O .git-completion.bash
+  shell: chdir={{user}} wget --no-check-certificate https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O .git-completion.bash
   sudo: false
   tags: git
 
 - name: git-prompt
-  shell: chdir={{user}} wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O .git-prompt.sh
+  shell: chdir={{user}} wget --no-check-certificate https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O .git-prompt.sh
   sudo: false
   tags: git
 
